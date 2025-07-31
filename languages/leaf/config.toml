@@ -1,0 +1,18 @@
+name = "Leaf"
+grammar = "leaf"
+path_suffixes = ["leaf"]
+autoclose_before = ">})"
+block_comment = { start = "<!--", prefix = "", end = "-->", tab_size = 0 }
+line_comment = "//"
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "(", end = ")", close = true, newline = true },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = ["comment", "string"] },
+    { start = "<", end = ">", close = false, newline = true, not_in = ["comment", "string"] },
+    { start = "!--", end = " --", close = true, newline = false, not_in = ["comment", "string"] },
+    { start = "#(", end = ")", close = true, newline = false, not_in = ["comment", "string"] },
+    { start = "#if(", end = "):", close = true, newline = true, not_in = ["comment", "string"] },
+    { start = "#for(", end = "):", close = true, newline = true, not_in = ["comment", "string"] },
+]
+completion_query_characters = ["-", "#"]
